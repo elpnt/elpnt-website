@@ -11,7 +11,12 @@
     "prettier": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json,css}'"
   },
   "dependencies": {
+    "@mapbox/rehype-prism": "^0.8.0",
+    "@mdx-js/loader": "^2.1.1",
+    "@mdx-js/react": "^2.1.1",
+    "@next/mdx": "^12.1.6",
     "next": "12.1.6",
+    "prism-themes": "^1.9.0",
     "react": "18.1.0",
     "react-dom": "18.1.0"
   },
