@@ -5,7 +5,7 @@ import Link from "next/link";
 import type { GetStaticProps, NextPage } from "next";
 
 import { Post } from "@/types";
-import { getPosts } from "@/utils";
+import { getPosts } from "@/utils/getPosts";
 
 interface Props {
   posts: Post[];
@@ -13,16 +13,16 @@ interface Props {
 
 const Home: NextPage<Props> = ({ posts }) => {
   return (
-    <main className="mx-auto max-w-[52rem] px-4 pb-28 sm:px-6 md:px-8 lg:max-w-6xl xl:px-12">
+    <main className="mx-auto max-w-[52rem] px-4 pb-28 pt-8 sm:px-6 md:px-8 lg:max-w-6xl xl:px-12">
       <div className="relative sm:ml-[calc(2rem+1px)] sm:pb-12 md:ml-[calc(3.5rem+1px)] lg:ml-[max(calc(14.5rem+1px),calc(100%-48rem))]">
         <div className="absolute top-3 bottom-0 right-full mr-7 hidden w-px bg-zinc-200 dark:bg-zinc-800 sm:block md:mr-[3.25rem]" />
         <div className="space-y-12">
-          {posts.map(({ slug, data: { title, publishedAt }, content }) => (
+          {posts.map(({ slug, meta: { title, publishedAt } }) => (
             <article key={slug} className="group relative">
               <div className="absolute -inset-y-2.5 -inset-x-4 group-hover:bg-zinc-100/70 dark:group-hover:bg-zinc-800/50 sm:rounded-2xl md:-inset-y-4 md:-inset-x-6" />
               <svg
                 viewBox="0 0 9 9"
-                className="absolute right-full top-2 mr-6 hidden h-2 w-2 overflow-visible text-zinc-200 dark:text-zinc-600 sm:block md:mr-12"
+                className="absolute right-full top-2 mr-6 hidden h-2 w-2 overflow-visible text-zinc-300 dark:text-zinc-600 sm:block md:mr-12"
               >
                 <circle
                   cx="4.5"
