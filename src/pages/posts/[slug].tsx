@@ -28,20 +28,18 @@ const PostPage = ({ source }: Props) => {
 
   return (
     <>
-      <Head title={`${title} | elpnt.dev`} />
+      <Head title={`${title} | elpnt`} />
       <div className="relative overflow-hidden py-16">
         <div className="relative px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-prose text-lg">
+          <article className="prose prose-lg prose-blue mx-auto mt-6 dark:prose-invert">
             <h1>
-              <span className="block text-center text-lg font-semibold tracking-wide text-blue-700 dark:text-blue-400">
+              <span className="block text-center text-lg font-semibold tracking-wide text-blue-700 dark:text-blue-500">
                 {format(new Date(publishedAt), "yyyy-MM-dd (eee)")}
               </span>
-              <span className="mt-2 block text-center text-3xl font-extrabold leading-8 tracking-tight text-gray-900 sm:text-4xl">
+              <span className="mt-2 block text-center text-3xl font-extrabold leading-8 tracking-tight sm:text-4xl">
                 {title}
               </span>
             </h1>
-          </div>
-          <article className="prose prose-lg prose-blue mx-auto mt-6 text-gray-600">
             <MDXRemote {...source} />
           </article>
         </div>

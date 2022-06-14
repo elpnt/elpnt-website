@@ -15,10 +15,10 @@ interface Props {
 const Home: NextPage<Props> = ({ posts }) => {
   return (
     <>
-      <Head title="elpnt.dev" />
+      <Head title="elpnt website" />
       <main className="mx-auto max-w-[52rem] px-4 pb-28 pt-8 sm:px-6 md:px-8 lg:max-w-6xl xl:px-12">
         <div className="text-center">
-          <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+          <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 dark:text-zinc-100 sm:text-4xl">
             Posts
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-xl text-gray-500 sm:mt-4">
