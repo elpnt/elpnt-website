@@ -1,30 +1,34 @@
 ---
-title: First Post
+title: ブログ作った
 tags: [Next.js, Markdown]
-publishedAt: "2022-06-04"
+publishedAt: "2022-06-14"
 ---
 
-## Header 1
+## 技術構成
 
-### Header 2
+- Frontend: [Next.js](https://nextjs.org/)
+- Styling: [Tailwind CSS](https://tailwindcss.com/)
+- Hosting: [GitHub Pages](https://pages.github.com/)
+- CMS: ローカルで [MDX](https://mdxjs.com/) ファイルを管理
 
-#### Header 3
+## Next.js
 
-##### Header 4
+Static Site Generation するつもりで Next.js と Gatsby とが選択肢に上がったが、2022 年 6 月現在だとほぼ Next.js がデファクトスタンダードであまり Gatsby を選ぶ理由もなかったので前者にした。
 
-aiueo
-`inline code`
-_italic_
-**bold**
-[link](https://example.com)
+ちょっと前まで Gatsby のほうが人気なイメージがあったのだけど、 [npm trends](https://www.npmtrends.com/gatsby-vs-next) で見た限りは 2019 年 9 月頃までは同程度の人気だったのに、それ以降はゼロコンフィグで React アプリを作り始められる手軽さからか Next.js がダウンロード数を大きく引き離しているらしい。
 
-- list 1
-- list 2
-- list 3
+## CMS の選定
 
-```js
-const hello = () => {
-  const x = 123;
-  console.log("hello world");
-};
+最初は新しい技術に触れたくて [GraphCMS](https://graphcms.com) に手を出してみたけど、GraphQL を使う手前 TypeScript との連携を考えて `graphql-codegen` の環境設定がどんどん膨らんでしまい、ブログ書くだけなのにオーバースペックを感じたので結局ローカルに MDX ファイルを作るだけの方式に落ち着いた。
+今のところ Markdown ではなく MDX である必要性は感じていない。
+
+## Tailwind CSS
+
+言わずと知れたユーティリティファーストの CSS ライブラリ。
+タイポグラフィ用に公式に `@tailwindcss/typography` というプラグインが用意されていて、これを使うだけで記事部分のスタイルやダークモード対応をよしなにやってくれる。
+
+```jsx
+<article className="prose dark:prose-invert">
+  <MDXRemote {...source} />
+</article>
 ```

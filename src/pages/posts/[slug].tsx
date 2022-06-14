@@ -5,6 +5,7 @@ import { format } from "date-fns";
 import { MDXRemote } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import rehypePrism from "rehype-prism-plus";
+import remarkGfm from "remark-gfm";
 
 import { Head } from "@/lib/Head";
 import type { Meta } from "@/types";
@@ -31,7 +32,7 @@ const PostPage = ({ source }: Props) => {
       <Head title={`${title} | elpnt`} />
       <div className="relative overflow-hidden py-16">
         <div className="relative px-4 sm:px-6 lg:px-8">
-          <article className="prose prose-lg prose-blue mx-auto mt-6 dark:prose-invert">
+          <article className="prose prose-blue mx-auto mt-6 dark:prose-invert">
             <h1>
               <span className="block text-center text-lg font-semibold tracking-wide text-blue-700 dark:text-blue-500">
                 {format(new Date(publishedAt), "yyyy-MM-dd (eee)")}
@@ -71,6 +72,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
   const mdxSource = await serialize(source, {
     mdxOptions: {
       rehypePlugins: [rehypePrism],
+      remarkPlugins: [remarkGfm],
     },
     parseFrontmatter: true,
   });
