@@ -1,12 +1,11 @@
 {
   "plugins": [
-    "@typescript-eslint",
-    "prettier"
+    "@typescript-eslint"
   ],
   "parser": "@typescript-eslint/parser",
   "extends": [
     "next/core-web-vitals",
-    "plugin:prettier/recommended"
+    "prettier"
   ],
   "rules": {
     "import/order": [
@@ -18,8 +17,8 @@
           "parent",
           "sibling",
           "index",
-          "type",
-          "object"
+          "object",
+          "type"
         ],
         "alphabetize": {
           "order": "asc"
@@ -29,12 +28,23 @@
             "pattern": "react",
             "group": "builtin",
             "position": "before"
+          },
+          {
+            "pattern": "@/**",
+            "group": "parent",
+            "position": "after"
           }
         ],
         "pathGroupsExcludedImportTypes": [
           "builtin"
         ],
         "newlines-between": "always"
+      }
+    ],
+    "@typescript-eslint/consistent-type-imports": [
+      "error",
+      {
+        "prefer": "type-imports"
       }
     ]
   }

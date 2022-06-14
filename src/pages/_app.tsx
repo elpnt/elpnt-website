@@ -1,5 +1,5 @@
 import "../../styles/globals.css";
-import "prism-themes/themes/prism-dracula.css";
+import "../../styles/prism-one-dark.css";
 
 import type { AppProps } from "next/app";
 
