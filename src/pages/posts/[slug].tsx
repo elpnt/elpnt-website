@@ -31,7 +31,7 @@ const PostPage = ({ source }: Props) => {
   return (
     <MainLayout>
       <Head title={`${title} | elpnt`} />
-      <div className="relative overflow-hidden px-4 py-16 sm:px-6 lg:px-8">
+      <div className="relative min-h-screen overflow-hidden px-4 py-16 sm:px-6 lg:px-8">
         <article className="prose prose-blue mx-auto mt-6 max-w-3xl dark:prose-invert">
           <h1>
             <span className="block text-center text-lg font-semibold tracking-wide text-blue-700 dark:text-blue-500">

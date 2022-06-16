@@ -14,7 +14,9 @@ const Home: NextPage<Props> = ({ posts }) => {
   return (
     <MainLayout>
       <Head title="elpnt website" />
-      <PostsList posts={posts} />
+      <div className="min-h-screen">
+        <PostsList posts={posts} />
+      </div>
     </MainLayout>
   );
 };

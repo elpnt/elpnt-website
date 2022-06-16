@@ -23,7 +23,7 @@ const NavBar = () => {
   return (
     <Disclosure
       as="nav"
-      className="sticky top-0 z-10 bg-white/80 shadow backdrop-blur"
+      className="sticky top-0 z-10 bg-white/80 shadow backdrop-blur dark:bg-zinc-900/80 dark:shadow-zinc-800"
     >
       {({ open }) => (
         <>
@@ -32,7 +32,7 @@ const NavBar = () => {
               <div className="flex">
                 <div className="flex flex-shrink-0 items-center">
                   <Link href="/">
-                    <a className="text-2xl font-bold text-gray-900">
+                    <a className="text-2xl font-bold text-zinc-900 dark:text-zinc-200">
                       elpnt.github.io
                     </a>
                   </Link>
@@ -43,8 +43,8 @@ const NavBar = () => {
                       <a
                         className={clsx(
                           isCurrent(href)
-                            ? "border-blue-500 text-gray-900"
-                            : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
+                            ? "border-blue-500 text-zinc-900 dark:border-blue-600 dark:text-zinc-200"
+                            : "border-transparent text-zinc-500 hover:border-zinc-300 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300",
                           "inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium"
                         )}
                       >
@@ -57,7 +57,7 @@ const NavBar = () => {
               <div className="hidden sm:ml-6 sm:flex sm:items-center">
                 <a
                   href="https://github.com/elpnt/elpnt.github.io"
-                  className="rounded-full bg-white p-1 text-gray-600 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                  className="rounded-full p-1 text-zinc-600 hover:text-zinc-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:text-zinc-400 dark:hover:text-zinc-100"
                 >
                   <span className="sr-only">View source</span>
                   <FaGithub className="h-6 w-6" aria-hidden="true" />
@@ -65,7 +65,13 @@ const NavBar = () => {
               </div>
               <div className="-mr-2 flex items-center sm:hidden">
                 {/* Mobile menu button */}
-                <Disclosure.Button className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
+                <Disclosure.Button
+                  className={clsx(
+                    "inline-flex items-center justify-center rounded-md p-2",
+                    "text-zinc-400 hover:bg-zinc-100 hover:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500",
+                    "dark:hover:bg-zinc-800 dark:hover:text-zinc-300"
+                  )}
+                >
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XIcon className="block h-6 w-6" aria-hidden="true" />
@@ -80,14 +86,14 @@ const NavBar = () => {
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 pt-2 pb-3">
               {navItems.map(({ name, href }) => (
-                <Disclosure.Button className="w-full" key={href}>
+                <Disclosure.Button className="w-full px-3" key={href}>
                   <Link href={href}>
                     <a
                       className={clsx(
                         isCurrent(href)
-                          ? "border-blue-500 bg-blue-50 text-blue-700"
-                          : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
-                        "block border-l-4 py-2 pl-3 pr-4 text-left text-base font-medium"
+                          ? "border-blue-500 bg-blue-50 text-blue-700 dark:bg-zinc-800 dark:text-white"
+                          : "border-transparent text-zinc-500 hover:border-zinc-300 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-700 dark:hover:text-white",
+                        "block border-l-4 py-2 pl-3 pr-4 text-left text-base font-medium dark:rounded-md dark:border-none"
                       )}
                     >
                       {name}
@@ -96,18 +102,18 @@ const NavBar = () => {
                 </Disclosure.Button>
               ))}
             </div>
-            <div className="border-t border-gray-200 px-2 py-2">
+            <div className="border-t border-zinc-200 px-2 py-2 dark:border-zinc-800">
               <Disclosure.Button
                 as="a"
                 href="https://github.com/elpnt/elpnt.github.io"
-                className="flex items-center rounded-md px-3 py-2 hover:bg-gray-100 hover:text-gray-700"
+                className="group flex items-center rounded-md px-3 py-2 hover:bg-zinc-100 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-700"
               >
                 <FaGithub
-                  className="h-6 w-6 text-zinc-800"
+                  className="h-6 w-6 text-zinc-800 group-hover:text-zinc-50 dark:text-zinc-400"
                   aria-hidden="true"
                 />
                 <div className="ml-3">
-                  <div className="text-base font-medium text-gray-800">
+                  <div className="text-base font-medium text-zinc-800 group-hover:text-white dark:text-zinc-300">
                     View source
                   </div>
                 </div>
