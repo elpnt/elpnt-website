@@ -1,4 +1,4 @@
-import { MainLayout } from "@/components/Layout/MainLayout";
+import { MainLayout } from "@/components/Layout";
 import { PostsList } from "@/components/PostsList";
 import { Head } from "@/lib/Head";
 import type { Post } from "@/types";
