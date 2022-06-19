@@ -32,7 +32,7 @@ const Works: NextPage<Props> = ({ plugins }) => {
 export default Works;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const inkdropApi = process.env.INKDROP_API as string;
+  const inkdropApi = "https://api.inkdrop.app/v1/packages";
 
   const pluginsData = await Promise.all(
     plugins.map(async ({ name, href, imageSrc }) => {
