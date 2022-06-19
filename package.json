@@ -6,7 +6,6 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export": "next export",
     "lint": "next lint --dir src",
     "eslint": "eslint --fix src",
     "prettier": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json,css}'"
@@ -28,7 +27,8 @@
     "rehype-prism-plus": "^1.4.0",
     "remark-frontmatter": "^4.0.1",
     "remark-gfm": "^3.0.1",
-    "remark-mdx-frontmatter": "^1.1.1"
+    "remark-mdx-frontmatter": "^1.1.1",
+    "sharp": "^0.30.6"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.2",
