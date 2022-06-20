@@ -7,6 +7,8 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { FaGithub } from "react-icons/fa";
 
+import { BLOG_NAME, BLOG_SOURCE_URL } from "@/config";
+
 const navItems = [
   { name: "Posts", href: "/posts" },
   { name: "Works", href: "/works" },
@@ -33,7 +35,7 @@ const NavBar = () => {
                 <div className="flex flex-shrink-0 items-center">
                   <Link href="/">
                     <a className="text-2xl font-bold text-zinc-900 dark:text-zinc-200">
-                      elpnt.github.io
+                      {BLOG_NAME}
                     </a>
                   </Link>
                 </div>
@@ -56,7 +58,7 @@ const NavBar = () => {
               </div>
               <div className="hidden sm:ml-6 sm:flex sm:items-center">
                 <a
-                  href="https://github.com/elpnt/elpnt.github.io"
+                  href={`${BLOG_SOURCE_URL}`}
                   className="rounded-full p-1 text-zinc-600 hover:text-zinc-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:text-zinc-400 dark:hover:text-zinc-100"
                 >
                   <span className="sr-only">View source</span>
@@ -105,7 +107,7 @@ const NavBar = () => {
             <div className="border-t border-zinc-200 px-2 py-2 dark:border-zinc-800">
               <Disclosure.Button
                 as="a"
-                href="https://github.com/elpnt/elpnt.github.io"
+                href={`${BLOG_SOURCE_URL}`}
                 className="group flex items-center rounded-md px-3 py-2 hover:bg-zinc-100 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-700"
               >
                 <FaGithub
