@@ -9,3 +9,10 @@ export interface Post {
   content: string;
   meta: Meta;
 }
+
+export interface InkdropPlugin {
+  name: string;
+  href: string;
+  imageSrc: string;
+  downloads: number;
+}

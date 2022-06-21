@@ -1,63 +1,38 @@
-import type { Plugin } from "@/components";
+import { SWRConfig } from "swr";
+
 import { InkdropPlugins } from "@/components";
 import { MainLayout } from "@/components/Layout";
+import type { InkdropPlugin } from "@/types";
+import { getInkdropPlugins } from "@/utils/getInkdropPlugins";
 
 import type { GetStaticProps, NextPage } from "next";
 
-type Props = {
-  plugins: Plugin[];
-};
+interface Props {
+  fallback: {
+    "/api/inkdropPlugins": InkdropPlugin[];
+  };
+}
 
-const plugins = [
-  {
-    name: "code-title",
-    href: "https://my.inkdrop.app/plugins/code-title",
-    imageSrc: "/inkdrop-code-title.png",
-  },
-  {
-    name: "link-card",
-    href: "https://my.inkdrop.app/plugins/link-card",
-    imageSrc: "/inkdrop-link-card.png",
-  },
-  {
-    name: "chartjs",
-    href: "https://my.inkdrop.app/plugins/chartjs",
-    imageSrc: "/inkdrop-chartjs.png",
-  },
-];
-
-const Works: NextPage<Props> = ({ plugins }) => {
+const Works: NextPage<Props> = ({ fallback }) => {
   return (
-    <MainLayout>
-      <InkdropPlugins plugins={plugins} />
-    </MainLayout>
+    <SWRConfig value={{ fallback }}>
+      <MainLayout>
+        <InkdropPlugins />
+      </MainLayout>
+    </SWRConfig>
   );
 };
 
 export default Works;
 
-export const getStaticProps: GetStaticProps = async () => {
-  const inkdropApi = "https://api.inkdrop.app/v1/packages/";
-
-  const pluginsData = await Promise.all(
-    plugins.map(async ({ name, href, imageSrc }) => {
-      const url = new URL(name, inkdropApi).toString();
-      const res = await fetch(url);
-      const json = await res.json();
-
-      return {
-        name,
-        href,
-        imageSrc,
-        version: json.releases.latest,
-        downloads: json.downloads,
-      };
-    })
-  );
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const plugins = await getInkdropPlugins();
 
   return {
     props: {
-      plugins: pluginsData,
+      fallback: {
+        "/api/inkdropPlugins": plugins,
+      },
     },
   };
 };
