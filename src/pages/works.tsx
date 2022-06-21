@@ -19,6 +19,11 @@ const plugins = [
     href: "https://my.inkdrop.app/plugins/link-card",
     imageSrc: "/inkdrop-link-card.png",
   },
+  {
+    name: "chartjs",
+    href: "https://my.inkdrop.app/plugins/chartjs",
+    imageSrc: "/inkdrop-chartjs.png",
+  },
 ];
 
 const Works: NextPage<Props> = ({ plugins }) => {
@@ -39,7 +44,6 @@ export const getStaticProps: GetStaticProps = async () => {
       const url = new URL(name, inkdropApi).toString();
       const res = await fetch(url);
       const json = await res.json();
-      console.log(res, json);
 
       return {
         name,
