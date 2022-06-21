@@ -58,7 +58,7 @@ const NavBar = () => {
               </div>
               <div className="hidden sm:ml-6 sm:flex sm:items-center">
                 <a
-                  href={`${BLOG_SOURCE_URL}`}
+                  href={BLOG_SOURCE_URL}
                   className="rounded-full p-1 text-zinc-600 hover:text-zinc-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:text-zinc-400 dark:hover:text-zinc-100"
                 >
                   <span className="sr-only">View source</span>
@@ -107,15 +107,15 @@ const NavBar = () => {
             <div className="border-t border-zinc-200 px-2 py-2 dark:border-zinc-800">
               <Disclosure.Button
                 as="a"
-                href={`${BLOG_SOURCE_URL}`}
+                href={BLOG_SOURCE_URL}
                 className="group flex items-center rounded-md px-3 py-2 hover:bg-zinc-100 hover:text-zinc-700 dark:text-zinc-400 dark:hover:bg-zinc-700"
               >
                 <FaGithub
-                  className="h-6 w-6 text-zinc-800 group-hover:text-zinc-50 dark:text-zinc-400"
+                  className="h-6 w-6 text-zinc-600 group-hover:text-zinc-800 dark:text-zinc-400 dark:group-hover:text-zinc-50"
                   aria-hidden="true"
                 />
                 <div className="ml-3">
-                  <div className="text-base font-medium text-zinc-800 group-hover:text-white dark:text-zinc-300">
+                  <div className="text-base font-medium text-zinc-500 group-hover:text-zinc-800 dark:text-zinc-300 dark:group-hover:text-white">
                     View source
                   </div>
                 </div>
@@ -134,9 +134,9 @@ type MainLayoutProps = {
 
 export const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
-    <main className="h-screen">
+    <div className="h-screen">
       <NavBar />
       {children}
-    </main>
+    </div>
   );
 };

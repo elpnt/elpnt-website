@@ -1,4 +1,4 @@
-import { DownloadIcon } from "@heroicons/react/outline";
+import { DownloadIcon } from "@heroicons/react/solid";
 import Image from "next/image";
 
 import type { StaticImageData } from "next/image";
@@ -20,11 +20,11 @@ export const InkdropPlugins: React.FC<InkdropPluginsProps> = ({ plugins }) => {
     <div className="relative min-h-screen px-4 pt-16 pb-20 sm:px-6 lg:px-8 lg:pt-24 lg:pb-28">
       <div className="relative mx-auto max-w-7xl">
         <div className="text-center">
-          <h2 className="text-2xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-3xl">
+          <h2 className="text-3xl font-extrabold tracking-tight text-zinc-900 dark:text-zinc-100">
             Inkdrop plugins
           </h2>
         </div>
-        <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-2xl lg:grid-cols-2">
+        <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-5xl lg:grid-cols-3">
           {plugins.map(({ name, href, imageSrc, downloads }) => (
             <a href={href} key={href}>
               <div className="flex flex-col overflow-hidden rounded-lg shadow-md hover:bg-zinc-50 hover:shadow dark:shadow-zinc-800/80 dark:hover:bg-zinc-800/20">
@@ -48,30 +48,6 @@ export const InkdropPlugins: React.FC<InkdropPluginsProps> = ({ plugins }) => {
                       {name}
                     </p>
                   </div>
-                  {/* <div className="mt-6 flex items-center">
-                  <div className="flex-shrink-0">
-                    <a href={post.author.href}>
-                      <span className="sr-only">{post.author.name}</span>
-                      <img
-                        className="h-10 w-10 rounded-full"
-                        src={post.author.imageUrl}
-                        alt=""
-                      />
-                    </a>
-                  </div>
-                  <div className="ml-3">
-                    <p className="text-sm font-medium text-zinc-900">
-                      <a href={post.author.href} className="hover:underline">
-                        {post.author.name}
-                      </a>
-                    </p>
-                    <div className="flex space-x-1 text-sm text-zinc-500">
-                      <time dateTime={post.datetime}>{post.date}</time>
-                      <span aria-hidden="true">&middot;</span>
-                      <span>{post.readingTime} read</span>
-                    </div>
-                  </div>
-                </div> */}
                 </div>
               </div>
             </a>
