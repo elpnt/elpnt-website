@@ -1,5 +1,3 @@
-import { SWRConfig } from "swr";
-
 import { InkdropPlugins } from "@/components";
 import { MainLayout } from "@/components/Layout";
 import type { InkdropPlugin } from "@/types";
@@ -7,19 +5,17 @@ import { getInkdropPlugins } from "@/utils/getInkdropPlugins";
 
 import type { GetStaticProps, NextPage } from "next";
 
+const ONE_DAY_IN_SECONDS = 24 * 60;
+
 interface Props {
-  fallback: {
-    "/api/inkdropPlugins": InkdropPlugin[];
-  };
+  plugins: InkdropPlugin[];
 }
 
-const Works: NextPage<Props> = ({ fallback }) => {
+const Works: NextPage<Props> = ({ plugins }) => {
   return (
-    <SWRConfig value={{ fallback }}>
-      <MainLayout>
-        <InkdropPlugins />
-      </MainLayout>
-    </SWRConfig>
+    <MainLayout>
+      <InkdropPlugins data={plugins} />
+    </MainLayout>
   );
 };
 
@@ -30,9 +26,8 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
   return {
     props: {
-      fallback: {
-        "/api/inkdropPlugins": plugins,
-      },
+      plugins,
     },
+    revalidate: ONE_DAY_IN_SECONDS,
   };
 };

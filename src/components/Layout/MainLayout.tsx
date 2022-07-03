@@ -10,7 +10,7 @@ import { FaGithub } from "react-icons/fa";
 import { BLOG_NAME, BLOG_SOURCE_URL } from "@/config";
 
 const navItems = [
-  { name: "Posts", href: "/posts" },
+  { name: "Snippets", href: "/snippets" },
   { name: "Works", href: "/works" },
 ];
 

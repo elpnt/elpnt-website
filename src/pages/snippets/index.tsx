@@ -1,32 +1,32 @@
 import { MainLayout } from "@/components/Layout";
-import { PostsList } from "@/components/PostsList";
+import { SnippetsList } from "@/components/SnippetsList";
 import { Head } from "@/lib/Head";
 import type { Post } from "@/types";
-import { getPosts } from "@/utils/getPosts";
+import { getSnippets } from "@/utils/getSnippets";
 
 import type { GetStaticProps, NextPage } from "next";
 
 interface Props {
-  posts: Post[];
+  snippets: Post[];
 }
 
-const Home: NextPage<Props> = ({ posts }) => {
+const Home: NextPage<Props> = ({ snippets }) => {
   return (
     <MainLayout>
       <Head title="elpnt website" />
       <div className="min-h-screen">
-        <PostsList posts={posts} />
+        <SnippetsList snippets={snippets} />
       </div>
     </MainLayout>
   );
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = getPosts();
+  const snippets = getSnippets();
 
   return {
     props: {
-      posts,
+      snippets,
     },
   };
 };

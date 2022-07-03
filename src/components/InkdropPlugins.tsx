@@ -1,15 +1,13 @@
 import { DownloadIcon } from "@heroicons/react/solid";
 import Image from "next/image";
-import useSWR from "swr";
 
 import type { InkdropPlugin } from "@/types";
 
-export const InkdropPlugins: React.FC = () => {
-  const { data: plugins } = useSWR<InkdropPlugin[]>(
-    "/api/inkdropPlugins",
-    (url: string) => fetch(url).then((res) => res.json())
-  );
+type InkdropPluginsProps = {
+  data: InkdropPlugin[];
+};
 
+export const InkdropPlugins: React.FC<InkdropPluginsProps> = ({ data }) => {
   return (
     <div className="relative min-h-screen px-4 pt-16 pb-20 sm:px-6 lg:px-8 lg:pt-24 lg:pb-28">
       <div className="relative mx-auto max-w-7xl">
@@ -19,8 +17,8 @@ export const InkdropPlugins: React.FC = () => {
           </h2>
         </div>
         <div className="mx-auto mt-12 grid max-w-lg gap-5 lg:max-w-5xl lg:grid-cols-3">
-          {plugins &&
-            plugins.map(({ name, href, imageSrc, downloads }) => (
+          {data &&
+            data.map(({ name, href, imageSrc, downloads }) => (
               <a href={href} key={href}>
                 <div className="flex flex-col overflow-hidden rounded-lg shadow-md hover:bg-zinc-50 hover:shadow dark:shadow-zinc-800/80 dark:hover:bg-zinc-800/20">
                   <div className="relative h-48 flex-shrink-0">
